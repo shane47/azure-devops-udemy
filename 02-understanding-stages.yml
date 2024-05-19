@@ -33,7 +33,7 @@ stages:
         SourceFolder: '$(System.DefaultWorkingDirectory)'
         Contents: |
           **/*.yaml
-          **/*.trf
+          **/*.tf
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
         
     - bash: ls -R $(Build.ArtifactStagingDirectory)
