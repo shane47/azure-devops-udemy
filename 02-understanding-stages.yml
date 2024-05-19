@@ -14,34 +14,41 @@ stages:
   jobs:
   - job: FirstBuildJob
     steps:
-    - bash: echo Build First Jobs
-    - bash: echo Build $(PipelineAuthor)
-  - job: SecondBuildJob
-    steps:
-    - bash: echo Build Second Jobs
-- stage: DevDeploy
-  variables: 
-    environment: Development
-  dependsOn: Build
-  jobs:
-  - job: DevFirstJob
-    steps:
-    - bash: echo $(environment) First Jop
-- stage: QADeploy
-  variables: 
-    environment: QA
-  dependsOn: Build
-  jobs:
-  - job: QAFirstJob
-    steps:
-    - bash: echo echo $(environment) First Jobs
-- stage: ProductionDeploy
-  variables: 
-    environment: Production
-  dependsOn:
-  - DevDeploy
-  - QADeploy
-  jobs:
-  - job: ProdFirstJob
-    steps:
-    - bash: echo echo $(environment) First Jobs
+    - bash: echo First Jobs
+    - bash: echo $(PipelineAuthor)
+    - bash: echo $(Build.BuildNumber)
+    - bash: echo $(Build.BuildId)
+    - bash: echo $(Build.SourceBranchName)
+    - bash: echo $(Build.SourcesDirectory)
+    - bash: echo $(System.DefaultWorkingDirectory)
+    - bash: ls -R $(System.DefaultWorkingDirectory)
+    - bash: echo $(Build.ArtifactStagingDirectory)
+  # - job: SecondBuildJob
+  #   steps:
+  #   - bash: echo Build Second Jobs
+# - stage: DevDeploy
+#   variables: 
+#     environment: Development
+#   dependsOn: Build
+#   jobs:
+#   - job: DevFirstJob
+#     steps:
+#     - bash: echo $(environment) First Jop
+# - stage: QADeploy
+#   variables: 
+#     environment: QA
+#   dependsOn: Build
+#   jobs:
+#   - job: QAFirstJob
+#     steps:
+#     - bash: echo echo $(environment) First Jobs
+# - stage: ProductionDeploy
+#   variables: 
+#     environment: Production
+#   dependsOn:
+#   - DevDeploy
+#   - QADeploy
+#   jobs:
+#   - job: ProdFirstJob
+#     steps:
+#     - bash: echo echo $(environment) First Jobs
