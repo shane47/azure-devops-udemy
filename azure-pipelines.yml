@@ -24,7 +24,7 @@ stages:
       displayName: Build an image
       inputs:
         containerRegistry: 'devopsTutorialConnection'
-        repository: 'devOpsTut/Currency-exchange'
+        repository: 'santoshraut/Currency-exchange'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: '$(tag)'
